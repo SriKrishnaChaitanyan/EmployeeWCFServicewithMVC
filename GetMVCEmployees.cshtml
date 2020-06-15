@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MVCEmployeeClientwithWCF.ServiceReference1.Employee>
+
+@{
+    ViewBag.Title = "Get Employees";
+}
+
+<h2>Get Employees</h2>
+
+<p>
+    @Html.ActionLink("Insert Employee", "InsertMVCEmployee")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeSal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeAddress)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+<tr>
+    <td>
+        @Html.HiddenFor(modelItem => item.EmployeeId)  
+        @Html.DisplayFor(modelItem => item.EmployeeName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EmployeeSal)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EmployeeAddress)
+    </td>
+    <td>
+        @Html.ActionLink("Edit", "UpdateMVCEmployee", "Employee", new { empId = item.EmployeeId }, null) |
+        @Html.ActionLink("Details", "DetailsMVCEmployee", "Employee", new { empId = item.EmployeeId }, null) |
+        @Html.ActionLink("Delete", "DeleteMVCEmployee", "Employee", new { empId = item.EmployeeId }, null)
+    </td>
+</tr>
+}
+
+</table>
